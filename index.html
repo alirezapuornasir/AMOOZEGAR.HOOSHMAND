@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101827"><meta name="description" content="آموزگار هوشمند؛ یادگیری، آزمون و معلم هوش مصنوعی">
+  <link rel="manifest" href="/manifest.webmanifest"><link rel="icon" href="/assets/icon.svg">
+  <link rel="stylesheet" href="/style.css"><title>آموزگار هوشمند</title>
+</head>
+<body>
+<header class="topbar"><div class="brand"><img src="/assets/icon.svg" alt=""><div><b>آموزگار هوشمند</b><small>یاد بگیر، تمرین کن، پیشرفت کن</small></div></div><button id="installBtn" class="ghost" hidden>نصب برنامه</button></header>
+<main>
+<section class="hero"><div><span class="pill">همراه یادگیری تو</span><h1>امروز چی یاد می‌گیری؟</h1><p>درس بخوان، آزمون بده و هرجا گیر کردی از معلم هوشمند بپرس.</p></div><div class="hero-art">✦</div></section>
+<nav class="tabs" aria-label="بخش‌ها">
+<button class="tab active" data-view="home">خانه</button><button class="tab" data-view="quiz">آزمون</button><button class="tab" data-view="tutor">معلم هوشمند</button><button class="tab" data-view="progress">پیشرفت</button><button class="tab" data-view="library">بانک سؤال</button>
+</nav>
+<section id="home" class="view active">
+  <div class="section-head"><h2>شروع سریع</h2><span id="questionCount" class="muted"></span></div>
+  <div class="grid cards">
+    <button class="feature" data-goto="quiz"><span class="emoji">📝</span><b>آزمون جدید</b><small>۱۰، ۲۰، ۳۰ یا ۵۰ سؤال</small></button>
+    <button class="feature" data-goto="tutor"><span class="emoji">🤖</span><b>از معلم بپرس</b><small>توضیح ساده و مرحله‌به‌مرحله</small></button>
+    <button class="feature" data-goto="library"><span class="emoji">📚</span><b>بانک سؤال</b><small>جست‌وجو در درس‌ها</small></button>
+    <button class="feature" data-goto="progress"><span class="emoji">📈</span><b>کارنامه من</b><small>نقاط قوت و ضعف</small></button>
+  </div>
+  <div class="panel"><h3>درس‌هایی که پوشش می‌دهیم</h3><div id="subjectChips" class="chips"></div></div>
+  <div class="panel"><h3>ادامه مطالعه</h3><p class="muted">پس از پایان هر بخش، نام درس را در قسمت آزمون انتخاب کن و از خودت امتحان بگیر.</p><button class="primary" data-goto="quiz">ساخت آزمون از یک درس</button></div>
+</section>
+<section id="quiz" class="view">
+  <div class="panel"><h2>آزمون‌ساز</h2><label>نام درس یا مبحثی که تمام کرده‌ای<input id="lessonTopic" placeholder="مثلاً فصل نیروها یا درس نقشه‌خوانی"></label><div class="form-grid">
+    <label>درس<select id="quizSubject"><option value="همه">همه درس‌ها</option></select></label>
+    <label>تعداد سؤال<select id="quizSize"><option>10</option><option selected>20</option><option>30</option><option>50</option></select></label>
+    <label>سطح<select id="quizLevel"><option value="همه">همه سطوح</option><option>آسان</option><option>متوسط</option><option>دشوار</option></select></label>
+  </div><button id="finishLesson" class="primary">این درس را تمام کردم؛ از من آزمون بگیر</button><button id="startQuiz" class="secondary">آزمون تصادفی از بانک</button><button id="aiQuiz" class="secondary">ساخت آزمون تازه با هوش مصنوعی</button><button id="reviewBtn" class="secondary">مرور اشتباهات قبلی</button><small id="reviewCount" class="muted"></small></div>
+  <div id="quizArea"></div>
+</section>
+<section id="tutor" class="view">
+  <div class="panel"><h2>معلم هوشمند</h2><p class="muted">سؤالت را واضح بنویس. پاسخ هوش مصنوعی ممکن است نیاز به بررسی با کتاب درسی داشته باشد.</p>
+  <div class="form-grid"><label>درس<select id="tutorSubject"><option>عمومی</option></select></label><label>پایه/سطح (اختیاری)<input id="grade" placeholder="مثلاً پایه چهارم"></label></div>
+  <div class="section-head"><h3>گفت‌وگو</h3><button id="clearChat" class="ghost">گفت‌وگوی تازه</button></div><div id="chatLog" class="chat-log"><div class="bubble bot">سلام! چه چیزی را می‌خواهی یاد بگیری؟ می‌توانم با مثال ساده توضیح بدهم.</div></div>
+  <form id="chatForm" class="chat-form"><textarea id="chatInput" rows="2" placeholder="مثلاً میعان چیست؟ با مثال توضیح بده..." required></textarea><button class="primary">ارسال</button></form>
+  <div class="image-tools"><input id="imageQuery" placeholder="نام جانور یا موضوع برای دیدن تصویر"><button id="imageSearch" class="secondary">جست‌وجوی تصویر</button></div><div id="imageResults"></div>
+  </div>
+</section>
+<section id="progress" class="view">
+ <div class="panel"><h2>کارنامه و پیشرفت</h2><div class="stats"><div><b id="attempts">۰</b><small>آزمون</small></div><div><b id="average">۰٪</b><small>میانگین</small></div><div><b id="best">۰٪</b><small>بهترین نمره</small></div></div><h3>عملکرد درس‌ها</h3><div id="subjectProgress"></div><h3>درس‌های تمام‌شده</h3><div id="lessonProgress"></div><h3>آزمون‌های اخیر</h3><div id="recentResults"></div><button id="clearProgress" class="danger">پاک‌کردن سوابق این دستگاه</button></div>
+</section>
+<section id="library" class="view">
+ <div class="panel"><h2>بانک سؤال</h2><input id="searchQuestions" placeholder="جست‌وجو در متن سؤال..."><div class="form-grid"><label>درس<select id="librarySubject"><option value="همه">همه درس‌ها</option></select></label><label>سطح<select id="libraryLevel"><option value="همه">همه سطوح</option><option>آسان</option><option>متوسط</option><option>دشوار</option></select></label></div><div id="questionList"></div>
+ <div class="import-row"><button id="exportQuestions" class="secondary">دانلود بانک ۲۰۰۰ سؤال JSON</button><button id="exportData" class="secondary">خروجی گرفتن از سوابق</button><label class="secondary file-label">واردکردن بانک سؤال JSON<input id="importQuestions" type="file" accept=".json,application/json" hidden></label></div>
+ </div>
+</section>
+</main>
+<footer>نسخهٔ آموزشی ۲۰۰۰ سؤالی • سوابق روی همین دستگاه ذخیره می‌شوند؛ قابلیت هوش مصنوعی به سهمیه API وابسته است.</footer>
+<script src="/app.js"></script>
+</body></html>
